@@ -41,7 +41,7 @@ public class TarefaController {
     }
 
     @PatchMapping
-    public ResponseEntity<TarefaDto> modifcarStatusTarefa(@RequestParam("id") String id, @RequestParam("status") Status status){
+    public ResponseEntity<TarefaDto> modificarStatusTarefa(@RequestParam("id") String id, @RequestParam("status") Status status){
         return ResponseEntity.ok(tarefaService.modificarStatusTarefa(id, status));
     }
 

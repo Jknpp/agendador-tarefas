@@ -34,10 +34,11 @@ public class TarefaService {
     }
 
     public List<TarefaDto> buscarTarefasPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal){
-        List<TarefasEntity> tarefas = tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal);
+        List<TarefasEntity> tarefas = tarefasRepository.findByDataEventoBetweenAndStatus(dataInicial, dataFinal, Status.PENDENTE);
 
         return tarefas.stream()
                 .map(entity -> TarefaDto.builder()
+                        .id(entity.getId())
                         .nomeTarefa(entity.getNomeTarefa())
                         .descricao(entity.getDescricao())
                         .dataCriacao(entity.getDataCriacao())
